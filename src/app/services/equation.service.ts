@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class EquationService {
 
   sampleTeXEquation = [
-    '\\cos (2\\theta) = \\cos^2 \\theta - \\sin^2 \\theta',
+    '-1 \\times \\frac{i \\times \\sqrt{64}}{8} \\times \\sqrt{i^2}',
     'n^{22}',
     '\\frac{n!}{k!(n-k)!}',
     '\\frac{\\frac{1}{x}+\\frac{1}{y}}{y-z}',
@@ -37,7 +37,6 @@ export class EquationService {
       list.push(nbr);
     }
     list.push(value);
-    console.log(list);
     return list;
   }
 }

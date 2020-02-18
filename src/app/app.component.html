@@ -6,5 +6,7 @@
     onlyDigit
   /><br />
   <button (click)="onCalculationClick()">Process</button><br />
+  <input type="checkbox" id="cbMathml" [(ngModel)]="isMathml" (change)="onCheckboxChange()">
+  <label for="cbMathml"> Enable MathML render</label><br>
   <ng-katex [equation]="result" [options]="options"></ng-katex>
 </div>
