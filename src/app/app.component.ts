@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { EquationService } from './services/equation.service';
+import { KatexOptions } from 'ng-katex';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,18 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'equation-breaker';
+
+  @Input()
+  unknownValue: string;
+
+  result: string;
+  options: KatexOptions = {
+    displayMode: true,
+    output: 'mathml'
+  };
+  constructor(private equationService: EquationService) {}
+
+  onCalculationClick() {
+    this.result = this.equationService.processEquation(parseInt(this.unknownValue));
+  }
 }
