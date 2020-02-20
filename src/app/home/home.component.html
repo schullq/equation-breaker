@@ -1,0 +1,47 @@
+<div class="jumbotron">
+  <div>
+    <h1>Welcome to Equation breaker</h1>
+    <p class="lead">
+      Enter a value in the following area to automatically generate a complex
+      equation which leads to this number.
+    </p>
+  </div>
+  <div>
+    <input
+      type="text"
+      id="unknownValue"
+      [(ngModel)]="unknownValue"
+      onlyDigit
+    /><br />
+    <button class="btn btn-primary" (click)="onCalculationClick()">
+      Process
+    </button>
+    <input
+      type="checkbox"
+      id="cbMathml"
+      [(ngModel)]="isMathml"
+      class="checkbox"
+    />
+    <label for="cbMathml"> Enable MathML render</label><br />
+  </div>
+  <div class="equation-box">
+    <div id="texEquation">
+      <ng-katex [equation]="result" [options]="options"></ng-katex>
+    </div>
+  </div>
+  <div>
+    <form>
+      <button
+        type="submit"
+        id="saveAs"
+        class="btn btn-success"
+        [hidden]="result === null"
+        (click)="onSaveAsClick()"
+      >
+        <fa-icon [icon]="faDownload"></fa-icon>
+        Download
+      </button>
+      <a download="YourEquation.png" [href]="latexDataUrl">Test</a>
+    </form>
+  </div>
+</div>

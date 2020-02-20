@@ -1,0 +1,6 @@
+.equation-box {
+  box-sizing: border-box;
+  padding: 20px 30px 30px;
+  height: 260px;
+  width: 100%;
+}

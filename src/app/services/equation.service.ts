@@ -7,9 +7,9 @@ export class EquationService {
 
   sampleTeXEquation = [
     '0',
-    '-1 \\times \\frac{i \\times \\sqrt{64}}{8} \\times \\sqrt{i^2}',
+    '-1\\times\\frac{i\\times\\sqrt{64}}{8}\\times\\sqrt{i^2}',
     '\\exp{\\frac{\\sqrt{988} \\times \\ln{1}}{67^7}} + \\frac{10}{\\sqrt{\\sqrt{10000}}}',
-    '3',
+    '\\int y\\, \\mathrm{d}x',
     '4',
     '5',
     '6',
@@ -23,7 +23,7 @@ export class EquationService {
   processEquation(value: number): string {
     const brokenNumber = this.breakNumber(value);
     let equations = [];
-    for (let nbr of brokenNumber) {
+    for (const nbr of brokenNumber) {
       equations.push(this.sampleTeXEquation[parseInt(nbr)]);
     }
     return equations.join('+');
