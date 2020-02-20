@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { EquationService } from '../services/equation.service';
 import { KatexOptions } from 'ng-katex';
-import html2canvas from 'html2canvas';
+import domtoimage from 'dom-to-image';
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-home',
@@ -11,12 +12,10 @@ import { faDownload } from '@fortawesome/free-solid-svg-icons';
 })
 export class HomeComponent implements OnInit {
   faDownload = faDownload;
-
   unknownValue = null;
   isMathml = false;
   result = null;
   options: KatexOptions;
-  latexDataUrl: string;
 
   constructor(private equationService: EquationService) {}
 
@@ -25,10 +24,9 @@ export class HomeComponent implements OnInit {
   onCalculationClick() {
     if (this.unknownValue !== null) {
       this.options = {
-        displayMode: false,
+        displayMode: true,
         output: this.isMathml ? 'mathml' : 'html'
       };
-      console.log(this.options);
       this.result = this.equationService.processEquation(
         parseInt(this.unknownValue, 10)
       );
@@ -37,16 +35,15 @@ export class HomeComponent implements OnInit {
 
   onSaveAsClick() {
     const data = document.getElementById('texEquation');
-    if (this.isMathml) {
-    } else {
-      html2canvas(data).then(canvas => {
-        const imgWidth = 208;
-        const pageHeight = 295;
-        const imgHeight = (canvas.height * imgWidth) / canvas.width;
-        const heightLeft = imgHeight;
-
-        this.latexDataUrl = canvas.toDataURL('image/png');
+    domtoimage
+      .toSvg(data, {
+        bgcolor: '#FFFFFF'
+      })
+      .then(dataUrl => {
+        let link = document.createElement('a');
+        link.download = 'my-image-name.svg';
+        link.href = dataUrl;
+        link.click();
       });
-    }
   }
 }
