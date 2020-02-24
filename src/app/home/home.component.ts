@@ -4,6 +4,10 @@ import { KatexOptions } from 'ng-katex';
 import domtoimage from 'dom-to-image';
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
 import { saveAs } from 'file-saver';
+import {
+  MatButtonToggle,
+  MatButtonToggleGroup
+} from '@angular/material/button-toggle';
 
 @Component({
   selector: 'app-home',
@@ -11,15 +15,22 @@ import { saveAs } from 'file-saver';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+
+  imgName = "YourEquation";
+
   faDownload = faDownload;
   unknownValue = null;
   isMathml = false;
   result = null;
   options: KatexOptions;
 
+  onSaveCallback: (data: HTMLElement) => void;
+
   constructor(private equationService: EquationService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.onImgTypeChange('');
+  }
 
   onCalculationClick() {
     if (this.unknownValue !== null) {
@@ -33,17 +44,52 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  onImgTypeChange(type: string) {
+    console.log(type);
+    switch (type) {
+      case 'png':
+        this.onSaveCallback = data =>
+        domtoimage
+          .toPng(data, {
+            bgcolor: '#FFFFFF'
+          })
+          .then(dataUrl => {
+            let link = document.createElement('a');
+            link.download = `${this.imgName}.${type}`;
+            link.href = dataUrl;
+            link.click();
+          });
+        break;
+      case 'svg':
+        this.onSaveCallback = data =>
+        domtoimage
+          .toSvg(data)
+          .then(dataUrl => {
+            let link = document.createElement('a');
+            link.download = `${this.imgName}.${type}`;
+            link.href = dataUrl;
+            link.click();
+          });
+        break;
+      case 'jpg':
+      default:
+        this.onSaveCallback = data =>
+        domtoimage
+          .toJpeg(data, {
+            bgcolor: '#FFFFFF'
+          })
+          .then(dataUrl => {
+            let link = document.createElement('a');
+            link.download = `${this.imgName}.${type}`;
+            link.href = dataUrl;
+            link.click();
+          });
+        break;
+    }
+  }
+
   onSaveAsClick() {
     const data = document.getElementById('texEquation');
-    domtoimage
-      .toSvg(data, {
-        bgcolor: '#FFFFFF'
-      })
-      .then(dataUrl => {
-        let link = document.createElement('a');
-        link.download = 'my-image-name.svg';
-        link.href = dataUrl;
-        link.click();
-      });
+    this.onSaveCallback(data);
   }
 }

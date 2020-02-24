@@ -29,18 +29,30 @@
       <ng-katex [equation]="result" [options]="options"></ng-katex>
     </div>
   </div>
-  <div>
-    <form>
-      <button
-        type="submit"
-        id="saveAs"
-        class="btn btn-success"
-        [hidden]="result === null"
-        (click)="onSaveAsClick()"
-      >
-        <fa-icon [icon]="faDownload"></fa-icon>
-        Download
-      </button>
-    </form>
+  <div [hidden]="result === null"
+      class="downloadBox">
+    <mat-button-toggle-group
+      (change)="onImgTypeChange($event.value)"
+      value="jpg"
+    >
+      <mat-button-toggle value="jpg">
+        JPG
+      </mat-button-toggle>
+      <mat-button-toggle value="png">
+        PNG
+      </mat-button-toggle>
+      <mat-button-toggle value="svg">
+        SVG
+      </mat-button-toggle> </mat-button-toggle-group
+    ><br />
+    <button
+      type="submit"
+      id="saveAs"
+      class="btn btn-success"
+      (click)="onSaveAsClick()"
+    >
+      <fa-icon [icon]="faDownload"></fa-icon>
+      Download
+    </button>
   </div>
 </div>

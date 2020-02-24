@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { KatexModule } from 'ng-katex';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 import { AppComponent } from './app.component';
 import { EquationService } from './services/equation.service';
@@ -11,6 +12,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -25,9 +27,11 @@ import { AboutComponent } from './about/about.component';
     BrowserModule,
     FormsModule,
     KatexModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    NoopAnimationsModule,
+    MatButtonToggleModule
   ],
   providers: [EquationService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
