@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  urlGitHub = 'https://github.com/schullq/equation-breaker';
 
   constructor() { }
 

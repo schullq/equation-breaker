@@ -8,8 +8,9 @@
       equation which leads to this number.
     </p>
   </div>
+
   <div class="row">
-    <span class="col">
+    <span class="col elem-center">
       <mat-form-field>
         <input
           matInput
@@ -20,49 +21,53 @@
         />
       </mat-form-field>
     </span>
-    <span class="col">
-      <button class="btn btn-primary" (click)="onCalculationClick()">
+    <span class="col elem-center">
+      <button mat-raised-button color="primary" (click)="onCalculationClick()">
         Process
       </button>
     </span>
-    <span class="col">
-      <input
-        type="checkbox"
-        id="cbMathml"
-        [(ngModel)]="isMathml"
-        class="checkbox"
-      />
-      <label for="cbMathml"> Enable MathML render</label>
+    <span class="col elem-center">
+      <mat-slide-toggle id="cbMathml" color="primary" [(ngModel)]="isMathml">
+        Enable MathML render
+      </mat-slide-toggle>
     </span>
   </div>
-  <div class="row equation-box">
-    <div id="texEquation">
-      <ng-katex [equation]="result" [options]="options"></ng-katex>
-    </div>
+
+  <div [hidden]="result === null" class="row equation-box elem-center">
+    <span id="texEquation" class="center-me">
+      <mat-card>
+        <ng-katex [equation]="result" [options]="options"></ng-katex>
+      </mat-card>
+    </span>
   </div>
-  <div [hidden]="result === null" class="row downloadBox">
-    <mat-button-toggle-group
-      (change)="onImgTypeChange($event.value)"
-      value="jpg"
+
+  <div [hidden]="result === null" class="download-box elem-center">
+    <span class="content elem-center">
+      <mat-button-toggle-group
+        (change)="onImgTypeChange($event.value)"
+        value="jpg"
+      >
+        <mat-button-toggle value="jpg">
+          JPG
+        </mat-button-toggle>
+        <mat-button-toggle value="png">
+          PNG
+        </mat-button-toggle>
+        <mat-button-toggle value="svg">
+          SVG
+        </mat-button-toggle>
+      </mat-button-toggle-group></span
     >
-      <mat-button-toggle value="jpg">
-        JPG
-      </mat-button-toggle>
-      <mat-button-toggle value="png">
-        PNG
-      </mat-button-toggle>
-      <mat-button-toggle value="svg">
-        SVG
-      </mat-button-toggle> </mat-button-toggle-group
-    ><br />
-    <button
-      type="submit"
-      id="saveAs"
-      class="btn btn-success"
-      (click)="onSaveAsClick()"
-    >
-      <i class="fas fa-download"></i>
-      Download
-    </button>
+    <span class="content">
+      <button
+        id="saveAs"
+        mat-raised-button
+        color="accent"
+        (click)="onSaveAsClick()"
+      >
+        <i class="fas fa-download"></i>
+        Download
+      </button>
+    </span>
   </div>
 </div>

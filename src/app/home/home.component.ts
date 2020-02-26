@@ -74,7 +74,7 @@ export class HomeComponent implements OnInit {
           })
           .then(dataUrl => {
             let link = document.createElement('a');
-            link.download = `${this.imgName}.${type}`;
+            link.download = `${this.imgName}.jpg`;
             link.href = dataUrl;
             link.click();
           });

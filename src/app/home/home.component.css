@@ -1,13 +1,22 @@
 .equation-box {
   box-sizing: border-box;
-  padding: 20px 30px 30px;
+  padding: 10px;
   height: 100%;
 }
 
-#texEquation {
-  display: inline-block;
+.elem-center {
+  text-align: center;
 }
 
-#downloadButton {
-  margin: 20px
+.center-me {
+  display: table;
+  margin: 0 auto;
+}
+
+.download-box {
+
+}
+
+.download-box .content {
+  margin: 5px;
 }
