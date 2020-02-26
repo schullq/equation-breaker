@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { KatexModule } from 'ng-katex';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import {MatInputModule} from '@angular/material/input';
 
 import { AppComponent } from './app.component';
 import { EquationService } from './services/equation.service';
@@ -29,7 +30,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     KatexModule,
     FontAwesomeModule,
     NoopAnimationsModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatInputModule
   ],
   providers: [EquationService],
   bootstrap: [AppComponent]

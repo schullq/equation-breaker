@@ -1,36 +1,46 @@
-<div class="jumbotron">
-  <div>
+<div>
+  <div class="row">
     <h1>Welcome to Equation breaker</h1>
+  </div>
+  <div class="row">
     <p class="lead">
       Enter a value in the following area to automatically generate a complex
       equation which leads to this number.
     </p>
   </div>
-  <div>
-    <input
-      type="text"
-      id="unknownValue"
-      [(ngModel)]="unknownValue"
-      onlyDigit
-    /><br />
-    <button class="btn btn-primary" (click)="onCalculationClick()">
-      Process
-    </button>
-    <input
-      type="checkbox"
-      id="cbMathml"
-      [(ngModel)]="isMathml"
-      class="checkbox"
-    />
-    <label for="cbMathml"> Enable MathML render</label><br />
+  <div class="row">
+    <span class="col">
+      <mat-form-field>
+        <input
+          matInput
+          id="unknownValue"
+          placeholder="Ex: 123"
+          [(ngModel)]="unknownValue"
+          onlyDigit
+        />
+      </mat-form-field>
+    </span>
+    <span class="col">
+      <button class="btn btn-primary" (click)="onCalculationClick()">
+        Process
+      </button>
+    </span>
+    <span class="col">
+      <input
+        type="checkbox"
+        id="cbMathml"
+        [(ngModel)]="isMathml"
+        class="checkbox"
+      />
+      <label for="cbMathml"> Enable MathML render</label>
+    </span>
   </div>
-  <div class="equation-box">
+  <div class="row equation-box">
     <div id="texEquation">
       <ng-katex [equation]="result" [options]="options"></ng-katex>
     </div>
   </div>
-  <div [hidden]="result === null"
-      class="downloadBox">
+  <div [hidden]="result === null" class="row downloadBox">
     <mat-button-toggle-group
       (change)="onImgTypeChange($event.value)"
       value="jpg"
@@ -51,7 +61,7 @@
       class="btn btn-success"
       (click)="onSaveAsClick()"
     >
-      <fa-icon [icon]="faDownload"></fa-icon>
+      <i class="fas fa-download"></i>
       Download
     </button>
   </div>

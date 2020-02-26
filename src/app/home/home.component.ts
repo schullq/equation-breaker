@@ -2,12 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { EquationService } from '../services/equation.service';
 import { KatexOptions } from 'ng-katex';
 import domtoimage from 'dom-to-image';
-import { faDownload } from '@fortawesome/free-solid-svg-icons';
-import { saveAs } from 'file-saver';
-import {
-  MatButtonToggle,
-  MatButtonToggleGroup
-} from '@angular/material/button-toggle';
+
 
 @Component({
   selector: 'app-home',
@@ -18,7 +13,6 @@ export class HomeComponent implements OnInit {
 
   imgName = "YourEquation";
 
-  faDownload = faDownload;
   unknownValue = null;
   isMathml = false;
   result = null;
