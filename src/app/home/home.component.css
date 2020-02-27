@@ -8,15 +8,6 @@
   text-align: center;
 }
 
-.center-me {
-  display: table;
-  margin: 0 auto;
-}
-
-.download-box {
-
-}
-
 .download-box .content {
   margin: 5px;
 }

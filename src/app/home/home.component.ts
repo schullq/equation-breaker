@@ -83,7 +83,7 @@ export class HomeComponent implements OnInit {
   }
 
   onSaveAsClick() {
-    const data = document.getElementById('texEquation');
+    const data = document.getElementById('tex-equation');
     this.onSaveCallback(data);
   }
 }

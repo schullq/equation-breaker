@@ -33,12 +33,16 @@
     </span>
   </div>
 
-  <div [hidden]="result === null" class="row equation-box elem-center">
-    <span id="texEquation" class="center-me">
-      <mat-card>
-        <ng-katex [equation]="result" [options]="options"></ng-katex>
+  <div [hidden]="result === null" class="equation-box elem-center">
+    <ng-scrollbar>
+      <mat-card id="tex-equation" class="center-me">
+        <ng-katex
+          [equation]="result"
+          [options]="options"
+          class="elem-center"
+        ></ng-katex>
       </mat-card>
-    </span>
+    </ng-scrollbar>
   </div>
 
   <div [hidden]="result === null" class="download-box elem-center">

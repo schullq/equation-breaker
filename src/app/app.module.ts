@@ -6,7 +6,8 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
+import { NgScrollbarModule } from 'ngx-scrollbar';
 
 import { AppComponent } from './app.component';
 import { EquationService } from './services/equation.service';
@@ -16,7 +17,7 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { Routes, RouterModule } from "@angular/router";
+import { Routes, RouterModule } from '@angular/router';
 
 const appRoutes: Routes = [
   { path: 'about', component: AboutComponent },
@@ -44,6 +45,7 @@ const appRoutes: Routes = [
     MatButtonModule,
     MatSlideToggleModule,
     MatCardModule,
+    NgScrollbarModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [EquationService],
